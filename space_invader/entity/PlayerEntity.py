@@ -3,8 +3,8 @@ from pygame import (KEYDOWN, K_s, K_w, K_d, K_a, K_SPACE)
 from pygame.key import get_pressed
 from entity.Entity import Entity
 from entity.Bullet import Bullet
-from time import sleep
-from entity.Bullet import Direction
+from entity.Entity import Entities
+from entity.Entity import Direction
 
 class PlayerEntity(Entity):
     """A PlayerEntity class for every player in the game"""
@@ -17,21 +17,17 @@ class PlayerEntity(Entity):
         self.screen = screen
         self.__img = "assets/spaceship.png"
         self.__entity = load(self.__img)
-
+        self.rect = self.__entity.get_rect()
         self.__pos_x = self.screen.WINDOW_WIDTH / 2 - (self.__ewidth // 2)
         self.__pos_y = self.screen.WINDOW_HEIGHT - (self.__eheight + 50)
-
-    def time_delta(self):
-        mills = get_ticks()
 
     def draw(self):
         self.screen.SCREEN.blit(self.__entity, (self.__pos_x, self.__pos_y))
 
     def fire(self):
         if len(self.screen.bullets) < 20:
-            bullet = Bullet(self.screen, self.__pos_x, self.__pos_y, Direction.UP)
+            bullet = Bullet(self.screen, self.__pos_x, self.__pos_y, Direction.UP, Entities.HERO)
             self.screen.bullets.append(bullet)
-
 
     def move(self):
         keys = get_pressed()
