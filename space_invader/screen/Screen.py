@@ -19,10 +19,14 @@ class Screen:
     """
     Main screen of the game
     """
+
+    
     __bg_img = "assets/space_background.png"
     __ic     = "assets/icon.png"
     __HOSTING = False
     __CLIENTS = 0
+
+    # declared them private because I don't want to re-assign them somewhere
     __enemies = []
     __players = []
     __bullets = []
@@ -43,7 +47,14 @@ class Screen:
         self.start_game()
 
     def start_game(self):
-        self.__players.append(PlayerEntity(self))
+        self.__enemies.clear()
+        self.__bullets.clear()
+        self.__enemy_bullets.clear()
+
+        self.player = PlayerEntity(self)
+        self.__enemies.append(EnemyEntity(self))
+        self.__enemies.append(EnemyEntity(self))
+        self.__enemies.append(EnemyEntity(self))
         self.__enemies.append(EnemyEntity(self))
 
     # when a player joins the game
@@ -75,32 +86,23 @@ class Screen:
         self.SCREEN.blit(self.__background, (0, 0))
 
         # draw every player(s) in the screen
-        for player in self.__players:
-            player.draw()
-            player.move()
+        # for player in self.__players:
+        #    player.draw()
+        #    player.move()
+        self.player.draw()
+        self.player.move()
 
         # draw every bullets in the screen
         for bullet in self.__bullets:
-            if bullet.y < 0 and bullet.DIRECTION == Direction.UP:
-                self.__bullets.remove(bullet)
-            else:
-                bullet.draw()
+            bullet.draw()
 
         # draw every enemy in the screen
         for enemy in self.__enemies:
-            if enemy.y > self.WINDOW_HEIGHT:
-                self.__enemies.remove(enemy)
-            else:
-                enemy.draw()
+            enemy.draw()
 
         # draw every enemy bullets in the screen
         for bullet in self.__enemy_bullets:
-            if bullet.y > self.WINDOW_HEIGHT and bullet.DIRECTION == Direction.DOWN:
-                self.__enemy_bullets.remove(bullet)
-            else:
-                bullet.draw()
-        print("bullet: ", len(self.__enemy_bullets))
-        print("enemy: ", len(self.__enemies))
+            bullet.draw()
 
     @property
     def bullets(self):
@@ -109,5 +111,9 @@ class Screen:
     @property
     def enemy_bullets(self):
         return self.__enemy_bullets
+
+    @property
+    def enemies(self):
+        return self.__enemies
 
         

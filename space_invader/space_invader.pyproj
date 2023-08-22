@@ -72,7 +72,7 @@
     <Content Include="assets\enemy_blue.png" />
     <Content Include="assets\enemy_bullet.png" />
     <Content Include="assets\enemy_white.png" />
-    <Content Include="assets\explotion.png" />
+    <Content Include="assets\explosion.png" />
     <Content Include="assets\icon.png" />
     <Content Include="assets\space_background.png" />
     <Content Include="assets\bullet.png" />
