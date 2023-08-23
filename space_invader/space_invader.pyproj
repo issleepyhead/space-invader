@@ -27,6 +27,9 @@
     <Compile Include="entity\EnemyEntity.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="entity\EnemyFactory.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="entity\ServerEnemyEntity.py">
       <SubType>Code</SubType>
     </Compile>

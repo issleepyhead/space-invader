@@ -8,15 +8,17 @@ from pygame.image import load
 class EnemyEntity(Entity):
     """Enemy class for the game THE BAD GUYS THAT LOOKS PRETTY GOOD"""
 
-    __ewidth = __eheight = 128
-    __enemy_entity = [load("assets/enemy_blue.png"), load("assets/enemy_white.png")]
+    __images = [load("assets/enemy_blue.png"), load("assets/enemy_white.png")]
     __explosion_w = __explosion_h = 256
     __explosion = load("assets/explosion.png")
     is_alive = True
 
     def __init__(self, screen):
         self.screen = screen
-        self.__entity = self.__enemy_entity[rand(0, 1)]
+        self.idx = rand(0, len(self.__images)-1)
+        self.__entity = self.__images[self.idx]
+        self.__eheight = self.__entity.get_rect().height
+        self.__ewidth = self.__entity.get_rect().width
         
         # random position
         self.__pos_x = rand(0, self.screen.WINDOW_WIDTH - self.__ewidth)
@@ -29,11 +31,10 @@ class EnemyEntity(Entity):
 
     def fire(self):
         if len(self.screen.enemy_bullets) < 100:
-            bullet = Bullet(self.screen, self.__pos_x, self.__pos_y + self.__eheight, Direction.DOWN, Entities.ENEMY)
+            bullet = Bullet(self.screen, self, Direction.DOWN, Entities.ENEMY)
             self.screen.enemy_bullets.append(bullet)
 
     def draw(self):
-        # check if there's a collision
         self.rect = self.__entity.get_rect(x=self.__pos_x, y=self.__pos_y)
 
         if not self.is_alive:
@@ -41,7 +42,10 @@ class EnemyEntity(Entity):
             return
         
         bullets_rect = [bullet.rect for bullet in self.screen.bullets]
-        if self.rect.collidelistall(bullets_rect):
+        collision = self.rect.collidelistall(bullets_rect)
+        if collision:
+            for bullet in collision:
+                del self.screen.bullets[bullet]
             self.screen.SCREEN.blit(self.__explosion, (self.__pos_x - self.__explosion_w // 3, self.__pos_y - self.__explosion_h // 3))
             self.is_alive = not self.is_alive
             return
@@ -57,5 +61,21 @@ class EnemyEntity(Entity):
 
     def explode(self):
         pass
+
+    @property
+    def x(self):
+        return self.__pos_x
+
+    @property
+    def y(self):
+        return self.__pos_y
+
+    @property
+    def width(self):
+        return self.__ewidth
+
+    @property
+    def height(self):
+        return self.__eheight
 
 

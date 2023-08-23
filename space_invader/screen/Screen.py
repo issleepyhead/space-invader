@@ -33,6 +33,7 @@ class Screen:
     __enemy_bullets = []
 
     delta = 0
+    mil = 0
 
 
     def __init__(self, width=1000, height=800):
