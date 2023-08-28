@@ -46,6 +46,9 @@
     <Compile Include="networking\BulletPacket.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="networking\Client.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="networking\EnemyPacket.py">
       <SubType>Code</SubType>
     </Compile>
@@ -64,11 +67,15 @@
     <Compile Include="screen\Screen.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="settings\GameState.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="entity\" />
     <Folder Include="assets\" />
     <Folder Include="networking\" />
+    <Folder Include="settings\" />
     <Folder Include="screen\" />
   </ItemGroup>
   <ItemGroup>

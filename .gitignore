@@ -1,3 +1,2 @@
 .vs/
-*.sln
-space_invader/*.pyproj
+ **/__pycache__/
