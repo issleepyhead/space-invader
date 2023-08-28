@@ -4,7 +4,6 @@ from pygame.key import get_pressed
 from pygame.draw import rect
 from pygame.sprite import spritecollide
 from pygame.sprite import Sprite
-from entity.Entity import Entity
 from entity.Bullet import Bullet
 from entity.Entity import Entities
 from entity.Entity import Direction
