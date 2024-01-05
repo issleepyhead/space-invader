@@ -3,6 +3,7 @@ from pygame.sprite import Sprite
 from entity.Entity import Entities
 from entity.Entity import Direction
 
+# Why not create an EnemyBullet class?
 class Bullet(Sprite):
     """bullets that will be drawn in the screen"""
 

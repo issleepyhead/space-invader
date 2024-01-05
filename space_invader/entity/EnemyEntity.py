@@ -9,7 +9,7 @@ from random import randint as rand
 from pygame.image import load
 
 class EnemyEntity(Sprite):
-    """Enemy class for the game THE BAD GUYS THAT LOOKS PRETTY GOOD"""
+    """Enemy class for the game THE BAD GUYS THAT LOOK PRETTY GOOD"""
     
 
     def __init__(self, screen):
@@ -18,6 +18,8 @@ class EnemyEntity(Sprite):
         self.screen = screen
         self.__images = [load("assets/enemy_blue.png"), load("assets/enemy_white.png")]
         self.idx = rand(0, len(self.__images)-1)
+
+        # TODO fix the images don't randomize it.
         self.image = self.__images[self.idx]
         self.width = self.image.get_rect().width
         self.height = self.image.get_rect().height
@@ -55,6 +57,7 @@ class EnemyEntity(Sprite):
                 self.rect = self.image.get_rect(x=self.rect.x - self.__explosion_w // 3, y=self.rect.y - self.__explosion_h // 3)
                 self.is_alive = False
 
+        # wtf is MAXCOUNT?
         MAX_COUNT = 3
         if not self.is_alive and self.counter <= MAX_COUNT:
             self.counter += 1
