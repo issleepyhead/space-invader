@@ -70,11 +70,18 @@
     <Compile Include="settings\GameState.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="world\Entity.py" />
+    <Compile Include="world\world.py" />
+    <Compile Include="world\PlayerEntity.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="entity\" />
     <Folder Include="assets\" />
     <Folder Include="networking\" />
+    <Folder Include="enemyentity\" />
+    <Folder Include="bulletentity\" />
+    <Folder Include="world\" />
+    <Folder Include="playerentity\" />
     <Folder Include="settings\" />
     <Folder Include="screen\" />
   </ItemGroup>

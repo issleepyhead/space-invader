@@ -10,7 +10,7 @@ class Entity(Sprite, ABC):
     y          = 0
 
     def __init__(self, world, image_path):
-        self.word = world
+        self.world = world
         self.image = load(image_path)
 
         self.entity_height = self.image.get_rect().height
@@ -21,16 +21,26 @@ class Entity(Sprite, ABC):
         # TODO change this implementation
         self.world.SCREEN.blit(self.image, (self.x, self.y))
 
+
     @abstractmethod
     def move(self):
+        '''
+        Defines how entity should move across the screen.
+        '''
         pass
 
     @abstractmethod
     def dispose(self):
+        '''
+        Defines how to dispose the entity.
+        '''
         pass
 
     @abstractmethod
     def update(self):
+        '''
+        Update the visual of the entity in the screen.
+        '''
         pass
 
 

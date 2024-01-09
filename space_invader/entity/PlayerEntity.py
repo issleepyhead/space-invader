@@ -32,8 +32,7 @@ class PlayerEntity(Sprite):
         self.y = self.screen.WINDOW_HEIGHT - (self.height + 50)
 
     def update(self):
-        self.rect = self.image.get_rect(x=self.x, y=self.y)
-        
+        self.rect = self.image.get_rect(x=self.x, y=self.y) 
 
         if self.lives == 0:
             self.screen.start_game()
