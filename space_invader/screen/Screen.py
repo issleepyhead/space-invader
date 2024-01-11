@@ -13,6 +13,7 @@ from pygame.time import Clock
 from entity.Entity import Direction
 from entity.PlayerEntity import PlayerEntity
 from entity.EnemyEntity import EnemyEntity
+from pygame.display import get_desktop_sizes
 
 
 class Screen:
@@ -41,12 +42,13 @@ class Screen:
         self.WINDOW_HEIGHT = height
         self.__background = load(self.__bg_img)
         self.__icon = load(self.__ic)
-        self.SCREEN = set_mode((width, height))
+        self.SCREEN = set_mode(get_desktop_sizes()[0])
         self.CLOCK = Clock()
         self.font = SysFont('segoeuibold', 24)
         set_caption("Space Invader")
         set_icon(self.__icon)
         self.start_game()
+        print(get_desktop_sizes())
 
     def start_game(self):
 
